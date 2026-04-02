@@ -1,0 +1,7 @@
+README.md
+setup.py
+agentbridge.egg-info/PKG-INFO
+agentbridge.egg-info/SOURCES.txt
+agentbridge.egg-info/dependency_links.txt
+agentbridge.egg-info/requires.txt
+agentbridge.egg-info/top_level.txt

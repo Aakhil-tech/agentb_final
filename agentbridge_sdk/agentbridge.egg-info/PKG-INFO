@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: agentbridge
+Version: 1.0.0
+Summary: RBI FREE-AI compliant monitoring for fintech AI agents
+Requires-Python: >=3.8
