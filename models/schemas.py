@@ -14,17 +14,13 @@ class DecisionRequest(BaseModel):
     user_id: str = Field(..., min_length=1)
     action_type: str = Field(..., min_length=1)
     input: Dict[str, Any] = Field(...)
-    reasoning: str = Field(..., min_length=1)
+    reasoning: str = Field(default="")
     confidence: float = Field(..., ge=0.0, le=1.0)
     output: Dict[str, Any] = Field(default_factory=dict)
     domain: str = Field(default="fintech")
     api_key: str = Field(..., min_length=1)
 
-    @validator("reasoning")
-    def reasoning_not_empty(cls, v):
-        if not v or not v.strip():
-            raise ValueError("reasoning cannot be empty — RBI FREE-AI Sutra 6")
-        return v
+
 
     @validator("action_type")
     def action_type_known(cls, v):

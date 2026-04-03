@@ -23,14 +23,12 @@ def validate(raw: dict) -> Tuple[bool, Optional[DecisionRequest], Optional[str]]
         if input is not dict → reject
     """
     # Check required fields
-    missing = [f for f in REQUIRED_FIELDS if not raw.get(f)]
+    missing = [f for f in REQUIRED_FIELDS if raw.get(f) is None]
     if missing:
         return False, None, f"Missing required fields: {missing}"
 
-    # Null reasoning check
+    # Null reasoning check removed to allow anomaly detection engine to flag it
     reasoning = raw.get("reasoning", "")
-    if not reasoning or not str(reasoning).strip():
-        return False, None, "reasoning cannot be null or empty — violates RBI FREE-AI Sutra 6 (Explainability)"
 
     # Action type check
     if raw.get("action_type") not in KNOWN_ACTION_TYPES:

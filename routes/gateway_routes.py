@@ -62,6 +62,14 @@ async def legacy_log(request: Request):
     if "session_id" not in raw:
         raw["session_id"] = "legacy_session"
 
+    # Map nested confidence for legacy clients
+    if "confidence" not in raw:
+        out = raw.get("output", {})
+        if isinstance(out, dict) and "confidence" in out:
+            raw["confidence"] = float(out["confidence"])
+        else:
+            raw["confidence"] = 0.85
+
     response_data, status_code = process_decision(raw)
     return JSONResponse(content=response_data, status_code=status_code)
 
