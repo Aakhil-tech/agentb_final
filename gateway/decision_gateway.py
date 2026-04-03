@@ -16,7 +16,7 @@ from models.schemas import DecisionRequest, DecisionResponse, RejectedDecision
 from validation.validator import validate
 from policy.engine import evaluate
 from risk.scorer import score
-from logging.audit_logger import write as audit_write
+from app_logging.audit_logger import write as audit_write
 from core_ai.pipeline import process as ai_process
 
 

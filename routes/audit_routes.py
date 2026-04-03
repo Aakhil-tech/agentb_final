@@ -4,7 +4,7 @@ Audit-specific endpoints: chain verification, incidents, reports.
 """
 from fastapi import APIRouter, HTTPException
 from database import supabase
-from logging.audit_logger import verify_chain
+from app_logging.audit_logger import verify_chain
 from core_ai.dao import DAO
 from core_ai.report_generator import generate_report
 import ast
