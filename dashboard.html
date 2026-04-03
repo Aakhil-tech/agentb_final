@@ -845,7 +845,7 @@ async function sendQuery() {
   try {
     const res = await fetch(`${backend}/query`, {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type':'application/json', 'X-API-Key': key},
       body: JSON.stringify({api_key: key, question})
     });
     const data = await res.json();
@@ -865,7 +865,7 @@ async function sendDemoPayload() {
   try {
     await fetch(`${backend}/log`, {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type':'application/json', 'X-API-Key': key},
       body: JSON.stringify({
         api_key: key, action_type: 'approve', agent_name: 'fraud-bot',
         input: {amount: 75000, kyc_verified: false},
@@ -930,7 +930,7 @@ async function submitManualLog() {
   try {
     const res = await fetch(`${backend}/log-manual`, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json', 'X-API-Key': key},
       body: JSON.stringify(payload)
     });
     const data = await res.json();
