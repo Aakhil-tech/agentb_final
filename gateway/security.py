@@ -5,7 +5,7 @@ No open endpoints — every request requires a valid key.
 """
 from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
-from starlette.middleware.base import BaseRequestResponse
+
 import time
 import os
 from collections import defaultdict
